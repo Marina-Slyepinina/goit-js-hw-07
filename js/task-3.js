@@ -1,32 +1,11 @@
-class StringBuilder {
-    #value;
+const input = document.querySelector("input#name-input");
+const output = document.querySelector("span#name-output");
 
-    constructor(initialValue) {
-        this.#value = initialValue;
-    }
+input.addEventListener("input", handleInput);
 
-    getValue() {
-        return this.#value;
-    }
-
-    padEnd(str) {
-        this.#value += str;
-    }
-    
-    padStart(str) {
-        this.#value = str + this.#value;
-    }
-
-    padBoth(str) {
-        this.#value = str + this.#value + str;
+function handleInput(event) {
+    const userInput = event.target.value.trim();
+    if (userInput !== "") {
+        output.textContent = userInput;
     }
 }
-
-const builder = new StringBuilder(".");
-console.log(builder.getValue()); // "."
-builder.padStart("^");
-console.log(builder.getValue()); // "^."
-builder.padEnd("^");
-console.log(builder.getValue()); // "^.^"
-builder.padBoth("=");
-console.log(builder.getValue()); // "=^.^="
